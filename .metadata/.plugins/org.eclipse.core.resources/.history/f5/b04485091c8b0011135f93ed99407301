@@ -1,0 +1,10 @@
+package normal;
+
+import java.time.LocalDate;
+
+public class LocalDateWorking {
+	public static void main(String[] args) {
+		LocalDate l = LocalDate.now();
+		System.out.println("Current:"+l.toString());
+	}
+}

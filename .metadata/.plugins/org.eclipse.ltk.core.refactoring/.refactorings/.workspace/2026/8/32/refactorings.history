@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Ninza_HRM&apos; to &apos;Com.TestYantra.HRM.Ninza_HRM&apos;" description="Rename resource &apos;Ninza_HRM&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/Ninza_HRM" name="Com.TestYantra.HRM.Ninza_HRM" stamp="1785994460197" updateReferences="true"/>
+</session>

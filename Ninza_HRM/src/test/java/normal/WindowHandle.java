@@ -1,0 +1,32 @@
+package normal;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+
+import genericUtility.WebDriverUtility;
+
+public class WindowHandle {
+	public static void main(String[] args) throws Exception {
+		WebDriverUtility wu = new WebDriverUtility();
+		
+		WebDriver driver = wu.launchBrowser("chrome");
+		
+		driver.get("https://www.flipkart.com/");
+		
+		String parent = driver.getWindowHandle();
+		
+		driver.findElement(By.xpath("(//input[@name=\"q\"])[1]")).clear();
+		driver.findElement(By.xpath("(//input[@name=\"q\"])[1]")).sendKeys("lamp",Keys.ENTER);
+		System.out.println("Parent:"+driver.getTitle());
+		
+		driver.findElement(By.xpath("//div[@class='RGLWAk']")).click();
+		
+		wu.multipleWindows(driver, "FELXE Column");
+		
+		System.out.println("Product name:"+driver.findElement(By.xpath("//h1[@class='v1zwn21l v1zwn26 _1psv1zeb9 _1psv1ze0']")).getText());
+		
+		Thread.sleep(5000);
+		driver.quit();
+	}
+}

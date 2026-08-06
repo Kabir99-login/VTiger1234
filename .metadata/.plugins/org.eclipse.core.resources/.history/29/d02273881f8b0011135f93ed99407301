@@ -1,0 +1,21 @@
+package genericUtility;
+
+import java.io.FileInputStream;
+
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+
+public class ExcelUtility {
+	public FileInputStream fis;
+	public int totalNumberOfRows(String sheetName) throws Exception {
+		fis = new FileInputStream("./src/test/resources/TestData.xlsx");
+		Workbook wb = WorkbookFactory.create(fis);
+		return wb.getSheet(sheetName).getPhysicalNumberOfRows();
+	}
+	
+	public int totalNumberOfColumns(String sheetName) throws Exception{
+		fis = new FileInputStream("./src/test/resources/TestData.xlsx");
+		Workbook wb = WorkbookFactory.create(fis);
+		return wb.getSheet(sheetName).getRow(0).getPhysicalNumberOfCells();
+	}
+}

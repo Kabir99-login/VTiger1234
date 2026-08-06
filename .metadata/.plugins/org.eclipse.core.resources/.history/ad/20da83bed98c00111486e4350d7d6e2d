@@ -1,0 +1,55 @@
+package normal;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
+
+import genericUtility.ExcelUtility;
+import genericUtility.FileUtility;
+import genericUtility.JavaUtility;
+import genericUtility.WebDriverUtility;
+import objectRepo.HomePage;
+import objectRepo.LoginPage;
+import objectRepo.NewProjectPage;
+import objectRepo.ProjectPage;
+
+public class CreateProject_NinzaHrm {
+	@Test	
+	public void createProject_Test() throws Exception {
+		WebDriver driver;
+		
+		FileUtility fu = new FileUtility();
+		String browser = fu.getDataFromPropertyFile("browser");
+		String url = fu.getDataFromPropertyFile("url");
+		String un = fu.getDataFromPropertyFile("username");
+		String pwd = fu.getDataFromPropertyFile("password");
+		
+		WebDriverUtility wu = new WebDriverUtility();
+		driver = wu.launchBrowser(browser);
+		
+		
+		driver.get(url);
+		
+		LoginPage lp = new LoginPage(driver);
+		lp.login(un, pwd);
+		Thread.sleep(3000);
+		
+		HomePage hp = new HomePage(driver);
+		hp.getProjects().click();
+		
+		ProjectPage pp = new ProjectPage(driver);
+		pp.getCproject().click();
+		
+		JavaUtility ju = new JavaUtility();
+		ExcelUtility eu = new ExcelUtility();
+		String pname = eu.readDataFromExcel("Sheet1", 1, 0)+ju.generateRandomNumber();
+		String manager = eu.readDataFromExcel("Sheet1", 1, 1);
+		String status = eu.readDataFromExcel("Sheet1", 1, 2);
+		
+		NewProjectPage npp = new NewProjectPage(driver);
+		npp.createProject(pname, manager, status);
+		
+		Thread.sleep(4000);
+		driver.quit();
+		
+	}
+}

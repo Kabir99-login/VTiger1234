@@ -1,0 +1,53 @@
+package objectRepo;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import genericUtility.WebDriverUtility;
+
+public class NewProjectPage {
+	public NewProjectPage(WebDriver d) {
+		PageFactory.initElements(d, this);
+	}
+	
+	@FindBy(name = "projectName")
+	private WebElement pName;
+	
+	@FindBy(name = "createdBy")
+	private WebElement pManager;
+	
+	@FindBy(xpath = "//label[text()='Project Status* ']/following-sibling::select[@name='status']")
+	private WebElement status;
+	
+	@FindBy(xpath = "//input[@value='Add Project']")
+	private WebElement add;
+
+	public WebElement getpName() {
+		return pName;
+	}
+
+	public WebElement getpManager() {
+		return pManager;
+	}
+
+	public WebElement getStatus() {
+		return status;
+	}
+
+	public WebElement getAdd() {
+		return add;
+	}
+	
+	public void createProject(String pn, String pm, String ps) {
+		pName.clear();
+		pName.sendKeys(pn);
+		pManager.clear();
+		pManager.sendKeys(pm);
+		
+		WebDriverUtility wu = new WebDriverUtility();
+		wu.select(ps, add);
+		add.click();
+	}
+}

@@ -1,0 +1,15 @@
+package normal;
+
+import java.time.LocalDate;
+
+public class LocalDateWorking {
+	public static void main(String[] args) {
+		LocalDate l = LocalDate.now();
+		System.out.println("Current:"+l.toString());
+		System.out.println("Days +:"+l.plusDays(5));
+		System.out.println("Days -:"+l.minusDays(5));
+		System.out.println("Month +:"+l.plusMonths(3));
+		System.out.println("Month -:"+l.minusMonths(3));
+		
+	}
+}

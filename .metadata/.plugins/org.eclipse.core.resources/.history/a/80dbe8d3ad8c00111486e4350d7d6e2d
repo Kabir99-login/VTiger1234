@@ -1,0 +1,38 @@
+package objectRepo;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import genericUtility.WebDriverUtility;
+
+public class ProjectPage {
+	public ProjectPage(WebDriver driver) {
+		PageFactory.initElements(driver, this);
+	}
+	
+	@FindBy(xpath = "//b[text()=' Projects']/ancestor::div/following-sibling::div/select")
+	private WebElement searchOption;
+	
+	@FindBy(xpath = "//b[text()=' Projects']/ancestor::div/following-sibling::div/input")
+	private WebElement searchTextField;
+	
+	@FindBy(xpath = "//span[.='Create Project']")
+	private WebElement cproject;
+
+	public WebElement getSearchOption() {
+		return searchOption;
+	}
+
+	public WebElement getSearchTextField() {
+		return searchTextField;
+	}
+	
+	public void searchProject(String option,String value) {
+		WebDriverUtility wu = new WebDriverUtility();
+		wu.select(option, searchTextField);
+		searchTextField.clear();
+		searchTextField.sendKeys(value);
+	}
+}

@@ -1,0 +1,20 @@
+package normal;
+
+import java.io.FileInputStream;
+import java.util.Properties;
+
+public class PropertyFile {
+	public String readData(String key) throws Exception {
+		//1. Open File
+		FileInputStream fis = new FileInputStream("./src/main/resources/CommonData.properties");
+		
+		//2. create property file object
+		Properties p = new Properties();
+		
+		//3. Load the content
+		p.load(fis);
+		
+		//4. Read the data
+		return p.getProperty(key);
+	}
+}

@@ -1,0 +1,70 @@
+package normal;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+
+public class DataManupalateInExcel {
+	public void readData() throws Exception {
+		// 1. opting the file
+		FileInputStream fis = new FileInputStream("./src/test/resources/TestData.xlsx");
+
+		// 2. Creating workbook type object n giving file access
+		Workbook wb = WorkbookFactory.create(fis);
+
+		// 3. Getting sheet access
+		Sheet sh = wb.getSheet("Sheet1");
+
+		// 4. Getting row access
+		Row r = sh.getRow(1);
+
+		// 5. Getting cell access
+		Cell cell = r.getCell(0);
+
+		// 6. Getting value
+		System.out.println(cell.toString());
+
+		wb.close();
+	}
+
+	public void writeData() throws Exception {
+		// 1. open the file in read mode
+		FileInputStream fis = new FileInputStream("./src/test/resources/TestData.xlsx");
+
+		// 2. Creating workbook type object n giving file access
+		Workbook wb = WorkbookFactory.create(fis);
+
+		// 3. Getting sheet access
+		Sheet sh = wb.getSheet("Sheet1");
+		
+		FileOutputStream fos = new FileOutputStream("./src/test/resources/TestData.xlsx");
+		
+		
+		//4. Writing data in workbook object
+		Row r =sh.createRow(4);
+		r.createCell(0).setCellValue("IBM");
+		r.createCell(1).setCellValue("Pradhyumn");
+		r.createCell(2).setCellValue("Created");
+		
+		//5. Create FOS object to make the file writable
+		
+		//6. Writing data to excel file
+		wb.write(fos);
+		
+		//7. close workbook
+		wb.close();
+
+	}
+
+	public static void main(String[] args) throws Exception, IOException {
+		DataManupalateInExcel excel = new DataManupalateInExcel();
+		excel.readData();
+		excel.writeData();
+	}
+}
