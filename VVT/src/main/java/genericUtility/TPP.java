@@ -7,7 +7,7 @@ public class TPP {
 	public static WebDriver driver;
 	
 	public TPP() {
-		
+		System.out.println("vdfh");
 	}
 
 }
