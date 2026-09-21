@@ -2,6 +2,10 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="C:\Users\User\tanuja\Phy_Ninza_HRM\src\test\java\ddt\Create_Project.java"/>
+			<item value="C:\Users\User\tanuja\Phy_Ninza_HRM\src\test\java\ddt\PropertyFile.java"/>
+			<item value="C:\Users\User\tanuja\TP43\src\basic\JavascriptExecutorCode.java"/>
+			<item value="C:\Users\User\git\NinzaHrm\Ninza_HRM"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -43,11 +47,15 @@
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+			<item value="HRM"/>
+			<item value="Com.TestYantra"/>
 			<item value="project"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="Phy_Ninza_HRM"/>
+			<item value="Vtiger"/>
 			<item value="Ninza_HRM"/>
 		</list>
 		<list key="projectNameTemplate">
